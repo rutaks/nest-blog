@@ -12,9 +12,8 @@ export class JWTStrategy extends PassportStrategy(Strategy) {
     @InjectRepository(UserEntity) private userRepo: Repository<UserEntity>,
   ) {
     super({
-      ignoreExpiration: false,
       jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Token'),
-      secretOrKey: process.env.SECRET,
+      secretOrKey: String(process.env.SECRET),
     });
   }
 

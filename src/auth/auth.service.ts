@@ -39,7 +39,6 @@ export class AuthService {
       const token = this.jwtService.sign({ username: foundUser.username });
       return { user: { ...foundUser.toJSON(), token } };
     } catch (error) {
-      console.log(error);
       throw new InternalServerErrorException(error.message);
     }
   }
