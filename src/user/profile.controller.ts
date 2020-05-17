@@ -3,7 +3,6 @@ import {
   Get,
   Param,
   NotFoundException,
-  Delete,
   Post,
   UseGuards,
 } from '@nestjs/common';
