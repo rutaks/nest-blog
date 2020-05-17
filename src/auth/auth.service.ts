@@ -34,6 +34,7 @@ export class AuthService {
   async login({ email, password }: LoginDTO) {
     try {
       const foundUser = await this.userRepo.findOne({ where: { email } });
+      if (!foundUser) throw new UnauthorizedException('Invalid Credentials');
       const isValid = await foundUser.comparePassword(password);
       if (!isValid) throw new UnauthorizedException('Invalid Credentials');
       const token = this.jwtService.sign({ username: foundUser.username });
